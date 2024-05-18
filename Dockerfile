@@ -1,9 +1,8 @@
 FROM golang:1.21.0-alpine
-ENV PORT 80
 EXPOSE 80
 
-WORKDIR /go/src/app
-COPY go.mod src/*.go ./
+WORKDIR /app
+COPY go.mod cmd/*.go ./
 
 RUN go mod vendor
 RUN go build -v -o app
