@@ -4,8 +4,7 @@ EXPOSE 80
 WORKDIR /app
 COPY go.mod cmd/*.go ./
 
-RUN go mod vendor
-RUN go build -v -o app
-RUN mv ./app /go/bin/
+RUN go mod tidy
+RUN go build -v -o main
 
-CMD ["app"]
+CMD ["./main"]

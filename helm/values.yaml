@@ -6,15 +6,13 @@ replicaCount: 1
 
 image:
   repository: superjugger88/go
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-namespace: demo
 
 serviceAccount:
   # Specifies whether a service account should be created
