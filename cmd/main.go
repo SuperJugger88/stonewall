@@ -7,7 +7,7 @@ import (
 
 func handler(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"message": "I love Nasik",
+		"message": "I love Nasik so much",
 	})
 }
 

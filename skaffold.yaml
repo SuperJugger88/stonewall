@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: kubetraining
+build:
+  artifacts:
+    - image: superjugger88/go
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: demo
+        chartPath: charts
+        valuesFiles:
+          - charts/values.yaml
+        version: 0.1.0
