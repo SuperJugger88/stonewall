@@ -6,7 +6,7 @@ build:
   artifacts:
     - image: superjugger88/go
       docker:
-        dockerfile: ./docker/Dockerfile
+        dockerfile: ./docker/Dockerfile.backend
 deploy:
   helm:
     releases:

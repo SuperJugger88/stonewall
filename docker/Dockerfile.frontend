@@ -1,0 +1,13 @@
+FROM denoland/deno:alpine-1.44.2
+
+ARG GIT_REVISION
+ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
+
+WORKDIR /app
+
+COPY frontend/* .
+RUN deno cache main.ts
+
+EXPOSE 8000
+
+ENTRYPOINT ["deno", "task", "start"]
