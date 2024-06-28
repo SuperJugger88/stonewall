@@ -1,5 +1,5 @@
 .idea/
-backend/go.sum
+go.sum
 nohup.out
 .DS_Store
-data/**
+data/

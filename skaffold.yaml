@@ -7,14 +7,14 @@ build:
     - image: superjugger88/go
       context: .
       docker:
-        dockerfile: pkg/Dockerfile.backend
+        dockerfile: docker/Dockerfile.api
 deploy:
   helm:
     releases:
       - name: demo
-        chartPath: charts/backend
+        chartPath: charts/api
         valuesFiles:
-          - charts/backend/values.yaml
+          - charts/api/values.yaml
         version: 0.1.0
       - name: db
         chartPath: charts/db
