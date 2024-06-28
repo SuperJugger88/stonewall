@@ -2,7 +2,7 @@ FROM golang:1.21.0-alpine as builder
 
 WORKDIR /app
 
-COPY backend/* .
+COPY backend/* ./
 
 RUN go mod tidy
 RUN go build -v -o cmd/main

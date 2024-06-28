@@ -1,17 +1,23 @@
-apiVersion: skaffold/v4beta11
+apiVersion: skaffold/v4beta9
 kind: Config
 metadata:
-  name: kubetraining
+  name: go-k-s
 build:
   artifacts:
     - image: superjugger88/go
+      context: .
       docker:
-        dockerfile: ./docker/Dockerfile.backend
+        dockerfile: pkg/Dockerfile.backend
 deploy:
   helm:
     releases:
       - name: demo
-        chartPath: charts
+        chartPath: charts/backend
         valuesFiles:
-          - charts/values.yaml
+          - charts/backend/values.yaml
+        version: 0.1.0
+      - name: db
+        chartPath: charts/db
+        valuesFiles:
+          - charts/db/values.yaml
         version: 0.1.0

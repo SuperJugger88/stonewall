@@ -1,6 +1,6 @@
 # Default values for charts.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# Declare variables to be passed into your db.
 
 replicaCount: 1
 
@@ -40,7 +40,7 @@ securityContext:
 containerPort: 80
 
 service:
-  type: NodePort
+  type: LoadBalancer
   port: 8080
 
 ingress:
