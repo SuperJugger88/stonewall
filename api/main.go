@@ -1,10 +1,14 @@
 package main
 
 import (
-	_ "backend/routers"
-	beego "github.com/beego/beego/v2/server/web"
+	"api/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	beego.Run()
+	router := gin.Default()
+
+	router.GET("/", routes.MainPage)
+
+	router.Run(":8080")
 }

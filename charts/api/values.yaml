@@ -37,8 +37,6 @@ securityContext:
    runAsGroup: 1000
    runAsUser: 1000
 
-containerPort: 80
-
 service:
   type: LoadBalancer
   port: 8080

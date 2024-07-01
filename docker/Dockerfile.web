@@ -5,7 +5,7 @@ ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
 
 WORKDIR /app
 
-COPY frontend/* .
+COPY . .
 RUN deno cache main.ts
 
 EXPOSE 8000

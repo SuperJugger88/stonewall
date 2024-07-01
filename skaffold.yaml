@@ -1,11 +1,11 @@
 apiVersion: skaffold/v4beta9
 kind: Config
 metadata:
-  name: go-k-s
+  name: go-k8s
 build:
   artifacts:
     - image: superjugger88/go
-      context: .
+      context: ./api
       docker:
         dockerfile: docker/Dockerfile.api
 deploy:
