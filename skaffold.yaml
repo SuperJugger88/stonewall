@@ -5,13 +5,13 @@ metadata:
 build:
   artifacts:
     - image: superjugger88/go
-      context: ./api
+      context: .
       docker:
         dockerfile: docker/Dockerfile.api
 deploy:
   helm:
     releases:
-      - name: demo
+      - name: api
         chartPath: charts/api
         valuesFiles:
           - charts/api/values.yaml

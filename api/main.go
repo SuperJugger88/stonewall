@@ -10,5 +10,5 @@ func main() {
 
 	router.GET("/", routes.MainPage)
 
-	router.Run(":8080")
+	router.Run(":80")
 }

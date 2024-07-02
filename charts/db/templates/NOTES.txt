@@ -1,22 +1,50 @@
-1. Get the application URL by running these commands:
-{{- if .Values.ingress.enabled }}
-{{- range $host := .Values.ingress.hosts }}
-  {{- range .paths }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
-  {{- end }}
+CockroachDB can be accessed via port {{ .Values.service.ports.grpc.external.port }} at the
+following DNS name from within your cluster:
+
+{{ template "cockroachdb.fullname" . }}-public.{{ .Release.Namespace }}.svc.cluster.local
+
+Because CockroachDB supports the PostgreSQL wire protocol, you can connect to
+the cluster using any available PostgreSQL client.
+
+{{- if not .Values.tls.enabled }}
+
+For example, you can open up a SQL shell to the cluster by running:
+
+    kubectl run -it --rm cockroach-client \
+        --image=cockroachdb/cockroach \
+        --restart=Never \
+      {{- if .Values.networkPolicy.enabled }}
+        --labels="{{ template "cockroachdb.fullname" . }}-client=true" \
+      {{- end }}
+        --command -- \
+        ./cockroach sql --insecure --host={{ template "cockroachdb.fullname" . }}-public.{{ .Release.Namespace }}
+
+From there, you can interact with the SQL shell as you would any other SQL
+shell, confident that any data you write will be safe and available even if
+parts of your cluster fail.
+{{- else }}
+
+Note that because the cluster is running in secure mode, any client application
+that you attempt to connect will either need to have a valid client certificate
+or a valid username and password.
 {{- end }}
-{{- else if contains "NodePort" .Values.service.type }}
-  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "db.fullname" . }})
-  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
-  echo http://$NODE_IP:$NODE_PORT
-{{- else if contains "LoadBalancer" .Values.service.type }}
-     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-           You can watch its status by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "db.fullname" . }}'
-  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "db.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
-  echo http://$SERVICE_IP:{{ .Values.service.port }}
-{{- else if contains "ClusterIP" .Values.service.type }}
-  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "db.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
-  export CONTAINER_PORT=$(kubectl get pod --namespace {{ .Release.Namespace }} $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
-  echo "Visit http://127.0.0.1:8080 to use your application"
-  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+{{- if and (.Values.networkPolicy.enabled) (not (empty .Values.networkPolicy.ingress.grpc)) }}
+
+Note: Since NetworkPolicy is enabled, the only Pods allowed to connect to this
+CockroachDB cluster are:
+
+1. Having the label: "{{ template "cockroachdb.fullname" . }}-client=true"
+
+2. Matching the following rules: {{- toYaml .Values.networkPolicy.ingress.grpc | nindent 0 }}
 {{- end }}
+
+Finally, to open up the CockroachDB admin UI, you can port-forward from your
+local machine into one of the instances in the cluster:
+
+    kubectl port-forward -n {{ .Release.Namespace }} {{ template "cockroachdb.fullname" . }}-0 {{ index .Values.conf `http-port` | int64 }} 
+
+Then you can access the admin UI at http{{ if .Values.tls.enabled }}s{{ end }}://localhost:{{ index .Values.conf `http-port` | int64 }}/ in your web browser.
+
+For more information on using CockroachDB, please see the project's docs at:
+https://www.cockroachlabs.com/docs/
