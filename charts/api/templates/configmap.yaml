@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+data:
+  # kv format
+  app.url: ":80"
+  database.url: "localhost:26257"
