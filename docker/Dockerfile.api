@@ -8,7 +8,7 @@ RUN go build -v -o main
 
 FROM golang:1.21.0-alpine
 
-WORKDIR /var/www
+WORKDIR /srv
 
 COPY --from=builder /app/main .
 
