@@ -11,13 +11,13 @@ build:
 deploy:
   helm:
     releases:
-      - name: api
-        chartPath: charts/api
-        valuesFiles:
-          - charts/api/values.yaml
-        version: 0.1.0
       - name: db
         chartPath: charts/db
         valuesFiles:
           - charts/db/values.yaml
+        version: 0.1.0
+      - name: api
+        chartPath: charts/api
+        valuesFiles:
+          - charts/api/values.yaml
         version: 0.1.0

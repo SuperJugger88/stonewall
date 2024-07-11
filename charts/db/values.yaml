@@ -250,23 +250,23 @@ statefulset:
 
   # Custom Liveness probe
   # https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request
-  customLivenessProbe: {}
-    # httpGet:
-    #   path: /health
-    #   port: http
-    #   scheme: HTTPS
-    # initialDelaySeconds: 30
-    # periodSeconds: 5
+#  customLivenessProbe:
+#     httpGet:
+#       path: /
+#       port: http
+#       scheme: HTTPS
+#     initialDelaySeconds: 30
+#     periodSeconds: 5
 
   # Custom Rediness probe
   # https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes
-  customReadinessProbe: {}
-    # httpGet:
-    #   path: /health
-    #   port: http
-    #   scheme: HTTPS
-    # initialDelaySeconds: 30
-    # periodSeconds: 5
+#  customReadinessProbe:
+#     httpGet:
+#       path: /
+#       port: http
+#       scheme: HTTPS
+#     initialDelaySeconds: 30
+#     periodSeconds: 5
 
   securityContext:
     enabled: true
@@ -302,7 +302,7 @@ service:
   # It exposes a ClusterIP that will automatically load balance connections
   # to the different database Pods.
   public:
-    type: ClusterIP
+    type: LoadBalancer
     # Additional labels to apply to this Service.
     labels:
       app.kubernetes.io/component: cockroachdb

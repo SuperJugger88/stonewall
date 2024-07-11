@@ -38,8 +38,8 @@ securityContext:
    runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  type: LoadBalancer
+  port: 8081
 
 ingress:
   enabled: false
@@ -58,7 +58,7 @@ ingress:
   #      - chart-example.local
 
 configMap:
-  appUrl: ":80"
+  appUrl: ":8081"
   databaseUrl: "postgresql://root@localhost:26257/defaultdb?sslmode=disable"
 
 resources: {}
