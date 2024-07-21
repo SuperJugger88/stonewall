@@ -4,5 +4,5 @@ metadata:
   name: {{ .Chart.Name }}
 data:
   # kv format
-  app.url: {{ .Values.configMap.appUrl }}
+  api.url: {{ .Values.configMap.apiUrl }}
   database.url: {{ .Values.configMap.databaseUrl }}

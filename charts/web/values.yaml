@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: superjugger88/go
+  repository: superjugger88/deno
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -31,15 +31,15 @@ podLabels: {}
 podSecurityContext:
   fsGroup: 1000
 
-securityContext:
-   readOnlyRootFilesystem: true
-   runAsNonRoot: true
-   runAsGroup: 1000
-   runAsUser: 1000
+#securityContext:
+#   readOnlyRootFilesystem: false
+#   runAsNonRoot: true
+#   runAsGroup: 1000
+#   runAsUser: 1000
 
 service:
   type: ClusterIP
-  port: 8081
+  port: 8000
 
 ingress:
   enabled: false
@@ -56,10 +56,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
-configMap:
-  apiUrl: ":8081"
-  databaseUrl: "postgresql://root@db-cockroachdb-public:26257/defaultdb?sslmode=disable"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

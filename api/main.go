@@ -159,5 +159,5 @@ func main() {
 
 	router.GET("/api/v1/test", routes.GetMainPage)
 
-	router.Run(os.Getenv("APP_URL"))
+	router.Run(os.Getenv("API_URL"))
 }
