@@ -302,7 +302,7 @@ service:
   # It exposes a ClusterIP that will automatically load balance connections
   # to the different database Pods.
   public:
-    type: ClusterIP
+    type: LoadBalancer
     # Additional labels to apply to this Service.
     labels:
       app.kubernetes.io/component: cockroachdb

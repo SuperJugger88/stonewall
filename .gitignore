@@ -1,6 +1,9 @@
 .idea/
-go.sum
 nohup.out
 .DS_Store
 data/
-/api/main
+.env
+*.tar.gz
+*.txt
+*.bak
+*.json
