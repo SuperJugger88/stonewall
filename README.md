@@ -1,4 +1,4 @@
-# Go-k8s
+# Stonewall, the best secret vault ever
 
 ## How to run app
 
