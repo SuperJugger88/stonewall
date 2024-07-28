@@ -1,9 +1,8 @@
 .idea/
 nohup.out
 .DS_Store
-data/
+data/**
 .env
 *.tar.gz
-*.txt
 *.bak
-*.json
+!.gitkeep
