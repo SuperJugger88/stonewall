@@ -15,11 +15,6 @@ build:
 deploy:
   helm:
     releases:
-      - name: caddy
-        chartPath: charts/caddy
-        valuesFiles:
-          - charts/caddy/values.yaml
-        version: 0.1.0
       - name: db
         chartPath: charts/db
         valuesFiles:
@@ -34,4 +29,9 @@ deploy:
         chartPath: charts/web
         valuesFiles:
           - charts/web/values.yaml
+        version: 0.1.0
+      - name: caddy
+        chartPath: charts/caddy
+        valuesFiles:
+          - charts/caddy/values.yaml
         version: 0.1.0

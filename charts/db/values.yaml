@@ -376,7 +376,7 @@ storage:
   persistentVolume:
     enabled: true
 
-    size: 100Gi
+    size: 1Gi
 
     # If defined, then `storageClassName: <storageClass>`.
     # If set to "-", then `storageClassName: ""`, which disables dynamic
@@ -486,7 +486,7 @@ tls:
     # Enable if the you want cockroach db to create its own certificates
     selfSigner:
       # If set, the cockroach db will generate its own certificates
-      enabled: true
+      enabled: false
       # Run selfSigner as non-root
       securityContext:
         enabled: true
@@ -509,9 +509,9 @@ tls:
       # Expiry window of node certificates means a window before actual expiry in which node certs should be rotated.
       nodeCertExpiryWindow: 168h
       # If set, the cockroachdb cert selfSigner will rotate the certificates before expiry.
-      rotateCerts: true
+      rotateCerts: false
       # Wait time for each cockroachdb replica to become ready once it comes in running state. Only considered when rotateCerts is set to true
-      readinessWait: 30s
+      readinessWait: 5s
       # Wait time for each cockroachdb replica to get to running state. Only considered when rotateCerts is set to true
       podUpdateTimeout: 2m
       # ServiceAccount annotations for selfSigner jobs (e.g. for attaching AWS IAM roles to pods)
