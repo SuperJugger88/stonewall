@@ -275,8 +275,8 @@ statefulset:
     # Specifies whether this ServiceAccount should be created.
     create: true
     # The name of this ServiceAccount to use.
-    # If not set and `create` is `true`, then services account is auto-generated.
-    # If not set and `create` is `false`, then it uses default services account.
+    # If not set and `create` is `true`, then config account is auto-generated.
+    # If not set and `create` is `false`, then it uses default config account.
     name: ""
     # Additional serviceAccount annotations (e.g. for attaching AWS IAM roles to pods)
     annotations: {}
@@ -317,7 +317,7 @@ service:
     # Additional annotations to apply to this Service.
     annotations: { }
 
-  # This services only exists to create DNS entries for each pod in
+  # This config only exists to create DNS entries for each pod in
   # the StatefulSet such that they can resolve each other's IP addresses.
   # It does not create a load-balanced ClusterIP and should not be used directly
   # by clients in most circumstances.
