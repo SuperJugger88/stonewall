@@ -3,10 +3,12 @@ FROM golang:1.21.0-alpine AS builder
 WORKDIR /app
 
 COPY stonewall-api/ .
-RUN go mod tidy
-RUN go build -v -o main
+RUN go mod download
 
-FROM golang:1.21.0-alpine
+ENV GOCACHE=/root/.cache/go-build
+RUN --mount=type=cache,target="/root/.cache/go-build" go build -o main
+
+FROM scratch
 
 WORKDIR /srv
 
