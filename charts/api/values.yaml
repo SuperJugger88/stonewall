@@ -59,7 +59,7 @@ ingress:
 
 configMap:
   apiUrl: ":8081"
-  databaseUrl: "postgresql://root@db-cockroachdb-public:26257/defaultdb?sslmode=disable"
+  databaseUrl: "postgresql://root@db-cockroachdb:26257/defaultdb?sslmode=disable"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
