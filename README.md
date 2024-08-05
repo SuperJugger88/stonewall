@@ -20,6 +20,10 @@ skaffold dev
 
 ### Open a kube-proxy tunnel between your host and services of the cluster (caddy & cocroachdb)
 
+```bash
+minikube tunnel --bind-address=127.0.0.1
+```
+
 Ctrl+c to stop the app.
 
 
