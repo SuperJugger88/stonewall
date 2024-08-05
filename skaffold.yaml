@@ -12,6 +12,8 @@ build:
       context: .
       docker:
         dockerfile: docker/Dockerfile.web
+  local:
+    useBuildkit: true
 deploy:
   helm:
     releases:
