@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/gomod-cache \
 RUN --mount=type=cache,target=/gomod-cache --mount=type=cache,target=/go-cache \
     go build -o main
 
-FROM scratch
+FROM busybox:latest
 
 WORKDIR /srv
 
