@@ -309,14 +309,6 @@ service:
     # Additional annotations to apply to this Service.
     annotations: {}
 
-  private:
-    type: ClusterIP
-    # Additional labels to apply to this Service.
-    labels:
-      app.kubernetes.io/component: cockroachdb
-    # Additional annotations to apply to this Service.
-    annotations: { }
-
   # This config only exists to create DNS entries for each pod in
   # the StatefulSet such that they can resolve each other's IP addresses.
   # It does not create a load-balanced ClusterIP and should not be used directly

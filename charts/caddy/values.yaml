@@ -137,7 +137,7 @@ config:
     
       redir /db /db/
       handle_path /db/* {
-        reverse_proxy http://db-cockroachdb-private:8080
+        reverse_proxy http://db-cockroachdb:8080
       }
     
       handle {
