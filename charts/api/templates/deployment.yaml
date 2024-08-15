@@ -37,16 +37,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           env:
             - name: API_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ .Chart.Name }}
-                  key: api.url
+              value: "0.0.0.0:8081"
             - name: DATABASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ .Chart.Name }}
-                  key: database.url
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+              value: "postgresql://root@db-cockroachdb:26257/defaultdb?sslmode=disable"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
