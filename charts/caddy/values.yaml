@@ -143,4 +143,9 @@ config:
       handle {
         reverse_proxy http://web:8000
       }
+    
+      redir /mail /mail/
+      handle_path /mail/* {
+        reverse_proxy http://mailhog:8025
+      }
     }

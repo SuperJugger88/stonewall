@@ -32,6 +32,11 @@ deploy:
         valuesFiles:
           - charts/web/values.yaml
         version: 0.1.0
+      - name: mailhog
+        chartPath: charts/mailhog
+        valuesFiles:
+          - charts/mailhog/values.yaml
+        version: 0.1.0
       - name: caddy
         chartPath: charts/caddy
         valuesFiles:
