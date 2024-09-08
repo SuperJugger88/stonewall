@@ -17,7 +17,7 @@ FROM busybox:latest
 
 WORKDIR /srv
 
-COPY --from=builder /app/main .
+COPY --from=builder /app/main /app/.env .
 
 EXPOSE 8081
 
