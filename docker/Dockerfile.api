@@ -8,7 +8,7 @@ RUN go env -w GOMODCACHE=/gomod-cache
 COPY stonewall-api/ .
 
 RUN --mount=type=cache,target=/gomod-cache \
-    go mod download -x
+    go mod tidy
 
 RUN --mount=type=cache,target=/gomod-cache --mount=type=cache,target=/go-cache \
     go build -o main
