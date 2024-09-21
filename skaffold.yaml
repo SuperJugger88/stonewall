@@ -21,24 +21,22 @@ deploy:
         chartPath: charts/db
         valuesFiles:
           - charts/db/values.yaml
-        version: 0.1.0
+        upgradeOnChange: false
       - name: api
         chartPath: charts/api
         valuesFiles:
           - charts/api/values.yaml
-        version: 0.1.0
       - name: web
         chartPath: charts/web
         valuesFiles:
           - charts/web/values.yaml
-        version: 0.1.0
       - name: mailhog
         chartPath: charts/mailhog
         valuesFiles:
           - charts/mailhog/values.yaml
-        version: 0.1.0
+        upgradeOnChange: false
       - name: caddy
         chartPath: charts/caddy
         valuesFiles:
           - charts/caddy/values.yaml
-        version: 0.1.0
+        upgradeOnChange: false

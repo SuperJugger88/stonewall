@@ -17,6 +17,8 @@ FROM busybox:latest
 
 WORKDIR /srv
 
+USER gopher
+
 COPY --from=builder /app/main /app/.env .
 
 EXPOSE 8081
