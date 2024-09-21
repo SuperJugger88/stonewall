@@ -6,8 +6,11 @@ ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
 WORKDIR /app
 
 COPY stonewall-web .
-RUN deno cache dev.ts
+RUN deno cache main.ts
+
+RUN --mount=type=cache,target=/deno-dir \
+    deno task build
 
 EXPOSE 8000
 
-CMD ["deno", "task", "start"]
+CMD ["run", "-A", "main.ts"]
