@@ -14,6 +14,7 @@ build:
         dockerfile: docker/Dockerfile.web
   local:
     useBuildkit: true
+    concurrency: 2
 deploy:
   helm:
     releases:
