@@ -8,7 +8,7 @@ build:
       context: .
       docker:
         dockerfile: docker/api.Dockerfile
-    - image: superjugger88/nextjs
+    - image: superjugger88/deno
       context: .
       docker:
         dockerfile: docker/web.Dockerfile

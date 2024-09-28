@@ -1,27 +1,26 @@
-FROM oven/bun:1.1.29-alpine AS deps
+FROM denoland/deno:alpine-1.46.3
 
-WORKDIR /var/www
-
-COPY stonewall-web/package.json stonewall-web/bun.lockb ./
-
-RUN bun install --frozen-lock
-
-FROM oven/bun:1.1.29-alpine AS builder
-
-WORKDIR /app
-
-COPY --from=deps /var/www/node_modules node_modules
-COPY stonewall-web .
-
-RUN bun run build
-
-FROM oven/bun:1.1.29-alpine
+ARG GIT_REVISION
+ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
 
 WORKDIR /srv
 
-COPY --from=builder /app/.next/standalone .
-COPY --from=builder /app/.next/static ./.next/static
+COPY stonewall-web/package.json .
+
+RUN --mount=type=cache,target=/deno-dir/npm \
+    --mount=type=cache,target=/deno-dir/deps \
+    --mount=type=cache,target=/deno-dir/gen \
+    --mount=type=cache,target=/deno-dir/registries \
+    deno cache package.json
+
+COPY stonewall-web/ .
+
+RUN --mount=type=cache,target=/deno-dir/npm \
+        --mount=type=cache,target=/deno-dir/deps \
+        --mount=type=cache,target=/deno-dir/gen \
+        --mount=type=cache,target=/deno-dir/registries \
+        deno task build
 
 EXPOSE 3000
 
-CMD ["bun", "run", "server.js"]
+CMD ["deno", "task", "start"]
