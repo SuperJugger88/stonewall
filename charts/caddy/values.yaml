@@ -132,7 +132,7 @@ config:
   caddyFile: |
     :80 {
       handle /api/v1/* {
-        reverse_proxy http://api:8081
+        reverse_proxy http://api:4000
       }
     
       redir /db /db/
@@ -141,7 +141,7 @@ config:
       }
     
       handle {
-        reverse_proxy http://web:8000
+        reverse_proxy http://web:3000
       }
     
       redir /mail /mail/
