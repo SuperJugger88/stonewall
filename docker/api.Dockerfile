@@ -17,8 +17,8 @@ FROM busybox:latest
 
 WORKDIR /srv
 
-COPY --from=builder /app/main /app/.env .
+COPY --from=builder /app/main /app/.env ./
 
-EXPOSE 8081
+EXPOSE 4000
 
 ENTRYPOINT ["./main"]

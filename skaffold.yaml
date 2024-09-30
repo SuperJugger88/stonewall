@@ -7,11 +7,11 @@ build:
     - image: superjugger88/go
       context: .
       docker:
-        dockerfile: docker/Dockerfile.api
-    - image: superjugger88/deno
+        dockerfile: docker/api.Dockerfile
+    - image: superjugger88/nextjs
       context: .
       docker:
-        dockerfile: docker/Dockerfile.web
+        dockerfile: docker/web.Dockerfile
   local:
     useBuildkit: true
     concurrency: 2
