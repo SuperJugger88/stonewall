@@ -1,0 +1,23 @@
+# Labels to add to all resources and selectors.
+commonLabels:
+  app.kubernetes.io/instance: mailhog
+  app.kubernetes.io/managed-by: Tiller
+  app.kubernetes.io/name: mailhog
+  app.kubernetes.io/version: v1.0.1
+
+# Images modify the tags for images without
+# creating patches.
+images:
+- name: docker.io/mailhog/mailhog
+  newTag: v1.0.1
+
+# Value of this field is prepended to the
+# names of all resources
+namePrefix: mailhog
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- deployment.yaml
+- service.yaml
+- serviceaccount.yaml
