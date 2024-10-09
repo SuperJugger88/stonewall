@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: caddy
+      app.kubernetes.io/name: caddy
+  template:
+    metadata:
+      annotations:
+        checksum/config: 28e00d1cba35ee7bd0befcff219ffdff1343d5b622875a79cb3fff73766a021b
+      labels:
+        app.kubernetes.io/instance: caddy
+        app.kubernetes.io/name: caddy
+    spec:
+      containers:
+      - image: caddy
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: health
+        name: caddy
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 9999
+          name: health
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 32m
+            memory: 64Mi
+        volumeMounts:
+        - mountPath: /etc/caddy/Caddyfile
+          name: config
+          subPath: Caddyfile
+      serviceAccountName: caddy
+      volumes:
+      - configMap:
+          name: caddy
+        name: config

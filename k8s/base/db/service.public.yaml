@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cockroachdb-public
+  labels:
+    app.kubernetes.io/name: cockroachdb
+    app.kubernetes.io/instance: "cockroachdb"
+    app.kubernetes.io/component: cockroachdb
+spec:
+  type: "LoadBalancer"
+  ports:
+    # The main port, served by gRPC, serves Postgres-flavor SQL, inter-node
+    # traffic and the CLI.
+    - name: "grpc"
+      port: 26257
+      targetPort: grpc
+  selector:
+    app.kubernetes.io/name: cockroachdb
+    app.kubernetes.io/instance: "cockroachdb"
+    app.kubernetes.io/component: cockroachdb

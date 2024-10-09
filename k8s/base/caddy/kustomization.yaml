@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: default
+
+# Images modify the tags for images without
+# creating patches.
+images:
+- name: caddy
+  newTag: 2.8.4-alpine
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+  - deployment.yaml
+  - serviceaccount.yaml
+  - service.yaml
+  - configmap.yaml

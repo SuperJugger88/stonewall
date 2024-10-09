@@ -1,43 +1,24 @@
-apiVersion: skaffold/v4beta9
+apiVersion: skaffold/v4beta11
 kind: Config
 metadata:
-  name: go-k8s
+  name: stonewall
 build:
   artifacts:
     - image: superjugger88/go
       context: .
       docker:
-        dockerfile: docker/api.Dockerfile
+        dockerfile: .docker/api.Dockerfile
     - image: superjugger88/nextjs
       context: .
       docker:
-        dockerfile: docker/web.Dockerfile
+        dockerfile: .docker/web.Dockerfile
   local:
     useBuildkit: true
     concurrency: 2
 deploy:
-  helm:
-    releases:
-      - name: db
-        chartPath: charts/db
-        valuesFiles:
-          - charts/db/values.yaml
-        upgradeOnChange: false
-      - name: api
-        chartPath: charts/api
-        valuesFiles:
-          - charts/api/values.yaml
-      - name: web
-        chartPath: charts/web
-        valuesFiles:
-          - charts/web/values.yaml
-      - name: mailhog
-        chartPath: charts/mailhog
-        valuesFiles:
-          - charts/mailhog/values.yaml
-        upgradeOnChange: false
-      - name: caddy
-        chartPath: charts/caddy
-        valuesFiles:
-          - charts/caddy/values.yaml
-        upgradeOnChange: false
+  kubectl:
+    {}
+manifests:
+  kustomize:
+    paths:
+      - .
