@@ -17,6 +17,9 @@ RUN bun run build
 
 FROM oven/bun:1.1.29-alpine
 
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
 WORKDIR /srv
 
 COPY --from=builder --chown=1000 /app/.next/standalone .
