@@ -31,6 +31,12 @@ spec:
           runAsGroup: 1000
           runAsNonRoot: true
           runAsUser: 1000
+      initContainers:
+        - name: wait-for-dependent-service
+          image: stefanevinance/wait-for-200
+          env:
+            - name: URL
+              value: http://cockroachdb:8080
       securityContext:
         fsGroup: 1000
       serviceAccountName: api
