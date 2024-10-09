@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caddy
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -18,7 +17,7 @@ spec:
         app.kubernetes.io/name: caddy
     spec:
       containers:
-      - image: caddy:2.8.4-alpine
+      - image: caddy
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:

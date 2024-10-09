@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -18,11 +17,11 @@ spec:
         app.kubernetes.io/version: 1.16.0
     spec:
       containers:
-      - image: superjugger88/go:latest
+      - image: superjugger88/go
         name: api
         envFrom:
           - configMapRef:
-              name: api-env
+              name: stonewall-env
         ports:
         - containerPort: 4000
           name: http

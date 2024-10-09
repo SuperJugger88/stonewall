@@ -17,12 +17,10 @@ RUN bun run build
 
 FROM oven/bun:1.1.29-alpine
 
-USER nextjs
-
 WORKDIR /srv
 
-COPY --from=builder --chown=nextjs /app/.next/standalone .
-COPY --from=builder --chown=nextjs /app/.next/static ./.next/static
+COPY --from=builder --chown=1000 /app/.next/standalone .
+COPY --from=builder --chown=1000 /app/.next/static ./.next/static
 
 EXPOSE 3000
 

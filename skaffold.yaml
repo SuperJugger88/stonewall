@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta7
+apiVersion: skaffold/v4beta11
 kind: Config
 metadata:
   name: stonewall
@@ -15,16 +15,10 @@ build:
   local:
     useBuildkit: true
     concurrency: 2
-    push: false
 deploy:
-  
-
-profiles:
-  - name: base
-    manifests:
-      kustomize:
-        paths:
-          - k8s/caddy/base
-          - k8s/mailhog/base
-          - k8s/web/base
-          - k8s/api/base
+  kubectl:
+    {}
+manifests:
+  kustomize:
+    paths:
+      - .

@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mailhog
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -22,7 +21,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        image: docker.io/mailhog/mailhog:v1.0.1
+        image: docker.io/mailhog/mailhog
         imagePullPolicy: IfNotPresent
         livenessProbe:
           initialDelaySeconds: 10

@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -18,12 +17,9 @@ spec:
         app.kubernetes.io/version: 1.16.0
     spec:
       containers:
-      - image: superjugger88/nextjs:latest
+      - image: superjugger88/nextjs
         imagePullPolicy: IfNotPresent
         name: web
-        envFrom:
-          - configMapRef:
-              name: web-env
         ports:
         - containerPort: 3000
           name: http
