@@ -12,9 +12,6 @@ spec:
     metadata:
       annotations:
         checksum/config: 28e00d1cba35ee7bd0befcff219ffdff1343d5b622875a79cb3fff73766a021b
-      labels:
-        app.kubernetes.io/instance: caddy
-        app.kubernetes.io/name: caddy
     spec:
       containers:
       - image: caddy

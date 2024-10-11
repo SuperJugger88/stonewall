@@ -2,9 +2,6 @@ kind: PodDisruptionBudget
 apiVersion: policy/v1
 metadata:
   name: cockroachdb-budget
-  labels:
-    app.kubernetes.io/name: cockroachdb
-    app.kubernetes.io/instance: "cockroachdb"
 spec:
   selector:
     matchLabels:

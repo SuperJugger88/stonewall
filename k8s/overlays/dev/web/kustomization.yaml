@@ -3,16 +3,21 @@ kind: Kustomization
 
 namespace: default
 
+replicas:
+  - name: web
+    count: 1
+
+commonLabels:
+  app.kubernetes.io/instance: web
+  app.kubernetes.io/name: web
+
 # Images modify the tags for images without
 # creating patches.
 images:
-- name: caddy
-  newTag: 2.8.4-alpine
+- name: superjugger88/nextjs
+  newTag: latest
 
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string
 resources:
-  - deployment.yaml
-  - serviceaccount.yaml
-  - service.yaml
-  - configmap.yaml
+  - ../../../base/web
