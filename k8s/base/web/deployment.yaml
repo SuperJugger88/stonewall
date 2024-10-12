@@ -25,3 +25,4 @@ spec:
       securityContext:
         fsGroup: 1000
       serviceAccountName: web
+  revisionHistoryLimit: 0

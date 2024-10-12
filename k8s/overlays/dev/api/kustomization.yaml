@@ -11,7 +11,6 @@ commonLabels:
     app.kubernetes.io/instance: api
     app.kubernetes.io/name: api
 
-
 # Images modify the tags for images without
 # creating patches.
 images:

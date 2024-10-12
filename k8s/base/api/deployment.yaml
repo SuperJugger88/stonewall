@@ -11,6 +11,7 @@ spec:
     spec:
       containers:
       - image: superjugger88/go
+        imagePullPolicy: IfNotPresent
         name: api
         ports:
         - containerPort: 4000
@@ -30,3 +31,4 @@ spec:
       securityContext:
         fsGroup: 1000
       serviceAccountName: api
+  revisionHistoryLimit: 0
