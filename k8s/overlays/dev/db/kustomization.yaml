@@ -21,3 +21,4 @@ commonLabels:
 # and emits as a YAML string
 resources:
   - ../../../base/db
+  - service.public.yaml

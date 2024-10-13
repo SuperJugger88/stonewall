@@ -7,6 +7,5 @@ resources:
   - job.init.yaml
   - poddisruptionbudget.yaml
   - service.discovery.yaml
-  - service.public.yaml
   - serviceaccount.yaml
   - statefulset.yaml

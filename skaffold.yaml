@@ -15,6 +15,7 @@ build:
   local:
     useBuildkit: true
     concurrency: 2
+    push: false
 deploy:
   kubectl:
     {}
