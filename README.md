@@ -4,7 +4,13 @@
 
 ### Prerequisites
 
-Installed kubectl >= v1.30.1, skaffold >= v2.12.0, minikube >= 1.33.1 and docker >= 26.1.3 + docker-buildx
+Installed kubectl >= v1.30.1, skaffold >= v2.12.0, minikube >= 1.33.1 and docker >= 26.1.3 + docker-buildx enabled, caddy-ingress-controller
+
+### Installation of caddy ingress controller via glasskube (https://glasskube.dev/docs/)
+
+```bash
+glasskube install caddy-ingress-controller
+```
 
 ### Start a local cluster with minikube on your machine
 
