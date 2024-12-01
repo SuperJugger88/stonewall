@@ -32,4 +32,11 @@ minikube tunnel --bind-address=127.0.0.1
 
 Ctrl+c to stop the app.
 
+### Endpoints and URLs
+
+cockroach.localhost - CockroachDB Cluster WebUI
+mail.localhost      - Mailhog WebUI
+localhost/api/v1/*  - REST/Api Enpoints
+localhost/*         - NextJS App
+
 
