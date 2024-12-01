@@ -9,3 +9,4 @@ resources:
   - service.discovery.yaml
   - serviceaccount.yaml
   - statefulset.yaml
+  - ingress.yaml

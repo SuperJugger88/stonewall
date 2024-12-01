@@ -24,6 +24,5 @@ manifests:
     paths:
       - k8s/overlays/dev/db
       - k8s/overlays/dev/mailhog
-      - k8s/overlays/dev/caddy
       - k8s/overlays/dev/web
       - k8s/overlays/dev/api
