@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: api
 spec:
-  ingressClassName: "caddy"
+  ingressClassName: "nginx"
   rules:
     - host: localhost
       http:

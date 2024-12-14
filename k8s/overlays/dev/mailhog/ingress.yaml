@@ -2,14 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mailhog
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
-  ingressClassName: "caddy"
+  ingressClassName: "nginx"
   rules:
-    - host: mail.localhost
+    - host: localhost
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /mail(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: mailhog

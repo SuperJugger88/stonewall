@@ -3,15 +3,16 @@ kind: Ingress
 metadata:
   name: web
 spec:
-  ingressClassName: "caddy"
+  ingressClassName: "nginx"
   rules:
     - host: localhost
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: web
                 port:
                   number: 3000
+

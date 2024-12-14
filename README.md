@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-Installed kubectl >= v1.30.1, skaffold >= v2.12.0, minikube >= 1.33.1 and docker >= 26.1.3 + docker-buildx enabled, caddy-ingress-controller
+Installed kubectl >= v1.30.1, skaffold >= v2.12.0, minikube >= 1.33.1 and docker >= 26.1.3 + docker-buildx enabled, nginx-ingress-controller
 
 ### Start a local cluster with minikube on your machine
 
@@ -12,10 +12,10 @@ Installed kubectl >= v1.30.1, skaffold >= v2.12.0, minikube >= 1.33.1 and docker
 minikube start
 ```
 
-### Installation of caddy ingress controller via glasskube just once (https://glasskube.dev/docs/)
+### Installation of nginx ingress controller via glasskube just once (https://glasskube.dev/docs/)
 
 ```bash
-glasskube install caddy-ingress-controller
+glasskube install ingress-nginx
 ```
 
 ### Run following an one-liner in your project root folder
@@ -24,7 +24,7 @@ glasskube install caddy-ingress-controller
 skaffold dev
 ```
 
-### Open a kube-proxy tunnel between your host and services of the cluster (caddy & cocroachdb)
+### Open a kube-proxy tunnel between your host and services of the cluster (nginx & cocroachdb)
 
 ```bash
 minikube tunnel --bind-address=127.0.0.1
@@ -35,8 +35,8 @@ Ctrl+c to stop the app.
 ### Endpoints and URLs
 
 ```text
-cockroach.localhost     - CockroachDB Cluster WebUI    
-mail.localhost          - Mailhog WebUI    
+localhost/db            - CockroachDB Cluster WebUI    
+localhost/mail          - Mailhog WebUI    
 localhost/api/v1/*      - REST/Api Enpoints    
 localhost/*             - NextJS App    
 ```
