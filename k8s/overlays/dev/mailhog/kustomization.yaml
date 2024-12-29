@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: default
+namespace: stonewall
 
 commonLabels:
   app.kubernetes.io/instance: mailhog
@@ -20,3 +20,4 @@ resources:
   - serviceaccount.yaml
   - service.yaml
   - ingress.yaml
+  - namespace.yaml

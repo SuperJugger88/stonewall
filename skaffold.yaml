@@ -18,7 +18,9 @@ build:
     push: false
 deploy:
   kubectl:
-    {}
+    flags:
+      global:
+        - --namespace=stonewall
 manifests:
   kustomize:
     paths:

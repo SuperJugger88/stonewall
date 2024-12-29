@@ -78,7 +78,7 @@ spec:
             - name: STATEFULSET_NAME
               value: cockroachdb
             - name: STATEFULSET_FQDN
-              value: cockroachdb.default.svc.cluster.local
+              value: cockroachdb.stonewall.svc.cluster.local
             - name: COCKROACH_CHANNEL
               value: kubernetes
           ports:
