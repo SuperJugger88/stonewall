@@ -20,3 +20,4 @@ commonLabels:
 resources:
   - ../../../base/db
   - service.public.yaml
+  - ingress.yaml

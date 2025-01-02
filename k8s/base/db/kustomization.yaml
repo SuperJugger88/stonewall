@@ -11,5 +11,5 @@ resources:
   - service.discovery.yaml
   - serviceaccount.yaml
   - statefulset.yaml
-  - ingress.yaml
   - namespace.yaml
+  - servicemonitor.yaml
