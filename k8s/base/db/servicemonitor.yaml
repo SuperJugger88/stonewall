@@ -2,8 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: cockroachdb-prometheus
-  labels:
-    serviceMonitorSelector: kube-prometheus-stack
+  namespace: kube-prometheus-stack
 spec:
   endpoints:
     - interval: 30s
@@ -11,7 +10,7 @@ spec:
       port: http
   namespaceSelector:
     matchNames:
-      - kube-prometheus-stack
+      - stonewall
   selector:
     matchLabels:
-      operated-prometheus: "true"
+      app.kubernetes.io/component: cockroachdb

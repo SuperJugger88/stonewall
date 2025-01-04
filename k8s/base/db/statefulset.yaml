@@ -89,7 +89,7 @@ spec:
               containerPort: 8080
               protocol: TCP
           volumeMounts:
-            - name: datadir
+            - name: cockroach-data
               mountPath: /cockroach/cockroach-data/
           livenessProbe:
             httpGet:
@@ -112,9 +112,9 @@ spec:
             privileged: false
             readOnlyRootFilesystem: true
       volumes:
-        - name: datadir
+        - name: cockroach-data
           persistentVolumeClaim:
-            claimName: datadir
+            claimName: cockroach-data
       securityContext:
         seccompProfile:
           type: "RuntimeDefault"
@@ -124,7 +124,7 @@ spec:
         runAsNonRoot: true
   volumeClaimTemplates:
     - metadata:
-        name: datadir
+        name: cockroach-data
         labels:
           app.kubernetes.io/name: cockroachdb
           app.kubernetes.io/instance: "cockroachdb"

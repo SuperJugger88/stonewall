@@ -1,7 +1,6 @@
 .idea/
 nohup.out
 .DS_Store
-data/**
 .env
 *.tar.gz
 *.bak
