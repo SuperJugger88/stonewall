@@ -21,10 +21,24 @@ deploy:
     flags:
       global:
         - --namespace=stonewall
-manifests:
-  kustomize:
-    paths:
-      - k8s/overlays/dev/db
-      - k8s/overlays/dev/mailhog
-      - k8s/overlays/dev/web
-      - k8s/overlays/dev/api
+profiles:
+  - name: dev
+    manifests:
+      kustomize:
+        paths:
+        - k8s/overlays/dev/db
+        - k8s/overlays/dev/mailhog
+        - k8s/overlays/dev/web
+        - k8s/overlays/dev/api
+  - name: stage
+    manifests:
+      kustomize:
+        paths:
+        - k8s/overlays/stage/web
+        - k8s/overlays/stage/api
+  - name: prod
+    manifests:
+      kustomize:
+        paths:
+        - k8s/overlays/prod/web
+        - k8s/overlays/prod/api

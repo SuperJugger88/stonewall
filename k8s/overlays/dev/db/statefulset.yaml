@@ -118,10 +118,6 @@ spec:
       securityContext:
         seccompProfile:
           type: "RuntimeDefault"
-        fsGroup: 1000
-        runAsGroup: 1000
-        runAsUser: 1000
-        runAsNonRoot: true
   volumeClaimTemplates:
     - metadata:
         name: cockroach-data
