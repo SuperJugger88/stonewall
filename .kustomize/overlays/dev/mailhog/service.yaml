@@ -13,6 +13,6 @@ spec:
     protocol: TCP
     targetPort: tcp-smtp
   selector:
-    app.kubernetes.io/instance: mailhog
     app.kubernetes.io/name: mailhog
+    app.kubernetes.io/instance: mailhog
   type: ClusterIP

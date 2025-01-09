@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/instance: web
       app.kubernetes.io/name: web
+      app.kubernetes.io/instance: web
   template:
     spec:
       containers:
@@ -25,4 +25,3 @@ spec:
       securityContext:
         fsGroup: 1000
       serviceAccountName: web
-  revisionHistoryLimit: 0

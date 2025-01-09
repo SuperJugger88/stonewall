@@ -2,8 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: cockroachdb-public
-  labels:
-    app.kubernetes.io/component: cockroachdb
 spec:
   type: "LoadBalancer"
   ports:
@@ -14,5 +12,4 @@ spec:
       targetPort: grpc
   selector:
     app.kubernetes.io/name: cockroachdb
-    app.kubernetes.io/instance: "cockroachdb"
-    app.kubernetes.io/component: cockroachdb
+    app.kubernetes.io/instance: cockroachdb

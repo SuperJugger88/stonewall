@@ -3,11 +3,14 @@ kind: Kustomization
 
 namespace: stonewall
 
+commonLabels:
+    app.kubernetes.io/name: web
+    app.kubernetes.io/instance: web
+
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string
 resources:
   - deployment.yaml
   - serviceaccount.yaml
   - service.yaml
-  - ingress.yaml
   - namespace.yaml

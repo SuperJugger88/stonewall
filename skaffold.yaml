@@ -24,20 +24,13 @@ deploy:
 manifests:
   kustomize:
     paths:
-      - k8s/overlays/dev/db
-      - k8s/overlays/dev/mailhog
-      - k8s/overlays/dev/web
-      - k8s/overlays/dev/api
+      - .kustomize/overlays/dev/api
+      - .kustomize/overlays/dev/web
+      - .kustomize/overlays/dev/mailhog
+      - .kustomize/overlays/dev/db
 profiles:
-  - name: stage
+  - name: ${PROFILE}
     manifests:
       kustomize:
         paths:
-        - k8s/overlays/stage/web
-        - k8s/overlays/stage/api
-  - name: prod
-    manifests:
-      kustomize:
-        paths:
-        - k8s/overlays/prod/web
-        - k8s/overlays/prod/api
+        - .kustomize/overlays/${PROFILE}

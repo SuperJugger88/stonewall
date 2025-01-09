@@ -2,13 +2,12 @@ kind: Job
 apiVersion: batch/v1
 metadata:
   name: cockroachdb-init
-  labels:
-    app.kubernetes.io/component: init
 spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/component: init
+        app.kubernetes.io/name: cockroachdb
+        app.kubernetes.io/instance: cockroachdb
     spec:
       securityContext:
         seccompProfile:

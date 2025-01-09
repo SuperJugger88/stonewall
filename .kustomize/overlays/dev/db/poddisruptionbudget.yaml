@@ -6,6 +6,5 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: cockroachdb
-      app.kubernetes.io/instance: "cockroachdb"
-      app.kubernetes.io/component: cockroachdb
+      app.kubernetes.io/instance: cockroachdb
   maxUnavailable: 1

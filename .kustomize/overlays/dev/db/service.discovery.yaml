@@ -2,8 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: cockroachdb
-  labels:
-    app.kubernetes.io/component: cockroachdb
   annotations:
     # Use this annotation in addition to the actual field below because the
     # annotation will stop being respected soon, but the field is broken in
@@ -33,5 +31,4 @@ spec:
       targetPort: http
   selector:
     app.kubernetes.io/name: cockroachdb
-    app.kubernetes.io/instance: "cockroachdb"
-    app.kubernetes.io/component: cockroachdb
+    app.kubernetes.io/instance: cockroachdb

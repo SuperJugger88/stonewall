@@ -3,15 +3,17 @@ kind: Kustomization
 
 namespace: stonewall
 
-commonLabels:
-  app.kubernetes.io/instance: mailhog
-  app.kubernetes.io/name: mailhog
+replicas:
+  - name: mailhog
+    count: 1
 
-# Images modify the tags for images without
-# creating patches.
 images:
-- name: docker.io/mailhog/mailhog
-  newTag: v1.0.1
+  - name: docker.io/mailhog/mailhog
+    newTag: v1.0.1
+
+commonLabels:
+    app.kubernetes.io/name: mailhog
+    app.kubernetes.io/instance: mailhog
 
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string

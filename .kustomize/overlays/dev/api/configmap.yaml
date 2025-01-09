@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api
+data:
+  APP_PORT: "4000"
+  SMTP_HOST: "mailhog"
+  SMTP_PORT: "1025"
+  EMAIL_FROM: "test@stonewall.com"
+  DATABASE_URL: "postgresql://root@cockroachdb:26257/defaultdb?sslmode=disable"

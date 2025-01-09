@@ -5,10 +5,6 @@ replicas:
   - name: api
     count: 1
 
-commonLabels:
-    app.kubernetes.io/instance: api
-    app.kubernetes.io/name: api
-
 # Images modify the tags for images without
 # creating patches.
 images:
@@ -19,7 +15,11 @@ images:
 # and emits as a YAML string
 resources:
   - ../../../base/api
+  - ingress.yaml
   - configmap.yaml
 
-patchesStrategicMerge:
-  - deployment.yaml
+patches:
+  - path: deployment.yaml
+    target:
+      kind: Deployment
+      name: api

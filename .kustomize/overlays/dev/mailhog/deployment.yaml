@@ -3,11 +3,10 @@ kind: Deployment
 metadata:
   name: mailhog
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/instance: mailhog
       app.kubernetes.io/name: mailhog
+      app.kubernetes.io/instance: mailhog
   template:
     spec:
       automountServiceAccountToken: false

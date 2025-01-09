@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/instance: api
       app.kubernetes.io/name: api
+      app.kubernetes.io/instance: api
   template:
     spec:
       containers:
@@ -31,4 +31,3 @@ spec:
       securityContext:
         fsGroup: 1000
       serviceAccountName: api
-  revisionHistoryLimit: 0

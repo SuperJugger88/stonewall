@@ -3,19 +3,17 @@ kind: Kustomization
 
 namespace: stonewall
 
-# Images modify the tags for images without
-# creating patches.
-images:
-  - name: cockroachdb/cockroach
-    newTag: v24.2.3
-
 replicas:
   - name: cockroachdb
     count: 2
 
+images:
+  - name: cockroachdb/cockroach
+    newTag: v24.2.3
+
 commonLabels:
     app.kubernetes.io/name: cockroachdb
-    app.kubernetes.io/instance: "cockroachdb"
+    app.kubernetes.io/instance: cockroachdb
 
 # List of resource files that kustomize reads, modifies
 # and emits as a YAML string

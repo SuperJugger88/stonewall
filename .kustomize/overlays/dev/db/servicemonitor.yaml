@@ -13,4 +13,5 @@ spec:
       - stonewall
   selector:
     matchLabels:
-      app.kubernetes.io/component: cockroachdb
+      app.kubernetes.io/name: cockroachdb
+      app.kubernetes.io/instance: cockroachdb
