@@ -1,8 +1,8 @@
 [submodule "stonewall-api"]
 	path = stonewall-api
 	url = git@github.com:SuperJugger88/stonewall-api.git
-	branch = ~HEAD
+	branch = main
 [submodule "stonewall-web"]
 	path = stonewall-web
 	url = git@github.com:SuperJugger88/stonewall-web.git
-	branch = ~HEAD
+	branch = main
