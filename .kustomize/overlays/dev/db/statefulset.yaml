@@ -36,7 +36,7 @@ spec:
       containers:
         - name: db
           image: "cockroachdb/cockroach"
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: IfNotPresent
           args:
             - shell
             - -ecx

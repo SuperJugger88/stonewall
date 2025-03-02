@@ -28,9 +28,3 @@ manifests:
       - .kustomize/overlays/dev/web
       - .kustomize/overlays/dev/mailhog
       - .kustomize/overlays/dev/db
-profiles:
-  - name: ${PROFILE}
-    manifests:
-      kustomize:
-        paths:
-        - .kustomize/overlays/${PROFILE}

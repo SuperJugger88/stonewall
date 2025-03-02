@@ -1,12 +1,12 @@
-FROM oven/bun:1.1.29-alpine AS deps
+FROM oven/bun:1.2-alpine AS deps
 
 WORKDIR /var/www
 
-COPY stonewall-web/package.json stonewall-web/bun.lockb ./
+COPY stonewall-web/package.json stonewall-web/bun.lock ./
 
 RUN bun install --frozen-lock
 
-FROM oven/bun:1.1.29-alpine AS builder
+FROM oven/bun:1.2-alpine AS builder
 
 WORKDIR /app
 
@@ -15,11 +15,12 @@ COPY stonewall-web .
 
 RUN bun run build
 
-FROM oven/bun:1.1.29-alpine
+FROM oven/bun:1.2-alpine
 
 WORKDIR /srv
 
 COPY --from=builder --chown=1000 /app/.next/standalone .
+COPY --chown=1000 /stonewall-web/public ./public
 COPY --from=builder --chown=1000 /app/.next/static ./.next/static
 
 EXPOSE 3000

@@ -9,7 +9,7 @@ replicas:
 
 images:
   - name: cockroachdb/cockroach
-    newTag: v24.2.3
+    newTag: v24.3.6
 
 commonLabels:
     app.kubernetes.io/name: cockroachdb
